@@ -1,0 +1,2 @@
+require("alrahma")
+print("hello")
