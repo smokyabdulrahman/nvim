@@ -1,2 +1,2 @@
-require("alrahma")
-print("hello")
+require("alrahma.core")
+require("alrahma.lazy")
