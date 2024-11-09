@@ -42,7 +42,6 @@ return {
 		lsp.on_attach(function(client, bufnr)
 			local opts = { buffer = bufnr, remap = false }
 
-			vim.keymap.set("n", "<leader>ff", function() vim.lsp.buf.format() end, opts)
 			vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
 			vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 			vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -59,7 +58,7 @@ return {
 		require('mason-lspconfig').setup({
 			-- Replace the language servers listed here
 			-- with the ones you want to install
-			ensure_installed = { 'tsserver', 'pyright', 'ruff', 'html', 'gopls' },
+			ensure_installed = { 'pyright', 'ruff', 'html', 'gopls' },
 			handlers = {
 				lsp.default_setup,
 			},
@@ -79,14 +78,6 @@ return {
 
 		vim.diagnostic.config({
 			virtual_text = true
-		})
-
-		-- Lint, Formatting
-		local null_ls = require('null-ls')
-		null_ls.setup({
-			sources = {
-				null_ls.builtins.formatting.ruff,
-			},
 		})
 	end,
 }
