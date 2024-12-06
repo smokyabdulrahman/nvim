@@ -3,6 +3,9 @@ return {
 	version = "v3.x",
 	dependencies = {
 		{
+			"neovim/nvim-lspconfig",
+		},
+		{
 			-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
 			-- used for completion, annotations and signatures of Neovim apis
 			"folke/lazydev.nvim",
@@ -15,13 +18,14 @@ return {
 			},
 		},
 		-- LSP Support
-		"neovim/nvim-lspconfig",
+		{
+			"mrcjkb/rustaceanvim",
+			version = "^5", -- Recommended
+			lazy = false, -- This plugin is already lazy
+		},
 		{ "Bilal2453/luvit-meta", lazy = true },
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-
-		-- Lint, Format Support
-		"nvimtools/none-ls.nvim",
 
 		-- Autocompletion
 		"hrsh7th/nvim-cmp",
@@ -91,7 +95,7 @@ return {
 		require("mason-lspconfig").setup({
 			-- Replace the language servers listed here
 			-- with the ones you want to install
-			ensure_installed = { "pyright", "ruff", "html", "gopls", "lua_ls" },
+			ensure_installed = { "rust_analyzer", "pyright", "ruff", "html", "gopls", "lua_ls" },
 			handlers = {
 				lsp.default_setup,
 			},
