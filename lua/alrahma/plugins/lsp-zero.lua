@@ -95,7 +95,7 @@ return {
 		require("mason-lspconfig").setup({
 			-- Replace the language servers listed here
 			-- with the ones you want to install
-			ensure_installed = { "rust_analyzer", "pyright", "ruff", "html", "gopls", "lua_ls" },
+			ensure_installed = { "clangd", "rust_analyzer", "pyright", "ruff", "html", "gopls", "lua_ls" },
 			handlers = {
 				lsp.default_setup,
 			},
