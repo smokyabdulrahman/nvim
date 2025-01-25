@@ -8,7 +8,7 @@ return {
 	config = function(_, opts)
 		opts.adapters = {
 			require("neotest-python")({
-				args = { "-v" }, -- get more diff
+				args = { "-vvv" }, -- get more diff
 			}),
 		}
 		opts.status = { virtual_text = true }
