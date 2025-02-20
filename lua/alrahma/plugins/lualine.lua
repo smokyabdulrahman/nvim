@@ -1,3 +1,18 @@
+--- @param trunc_len number truncates component to trunc_len number of chars
+--- @param hide_width number|nil hides component when window width is smaller then hide_width
+--- return function that can format the component accordingly
+function Trunc(trunc_len, hide_width)
+	return function(str)
+		local win_width = vim.fn.winwidth(0)
+		if hide_width and win_width < hide_width then
+			return ""
+		elseif trunc_len and #str > trunc_len then
+			return str:sub(1, trunc_len) .. "..."
+		end
+		return str
+	end
+end
+
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -22,7 +37,7 @@ return {
 				},
 			},
 			sections = {
-				lualine_a = { "branch", "diff", "diagnostics" },
+				lualine_a = { { "branch", fmt = Trunc(16, nil) }, "diff", "diagnostics" },
 				lualine_b = {},
 				lualine_c = { "filename" },
 				lualine_x = { "encoding", "fileformat", "filetype" },

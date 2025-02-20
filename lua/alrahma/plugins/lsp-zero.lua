@@ -17,12 +17,6 @@ return {
 				},
 			},
 		},
-		-- LSP Support
-		{
-			"mrcjkb/rustaceanvim",
-			version = "^5", -- Recommended
-			lazy = false, -- This plugin is already lazy
-		},
 		{ "Bilal2453/luvit-meta", lazy = true },
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -95,7 +89,15 @@ return {
 		require("mason-lspconfig").setup({
 			-- Replace the language servers listed here
 			-- with the ones you want to install
-			ensure_installed = { "clangd", "rust_analyzer", "pyright", "ruff", "html", "gopls", "lua_ls" },
+			ensure_installed = {
+				"clangd",
+				"rust_analyzer",
+				"pyright",
+				"ruff",
+				"html",
+				"gopls",
+				"lua_ls",
+			},
 			handlers = {
 				lsp.default_setup,
 			},
