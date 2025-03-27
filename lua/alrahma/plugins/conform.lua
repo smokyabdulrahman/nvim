@@ -19,6 +19,7 @@ return {
 	opts = {
 		-- Define your formatters
 		formatters_by_ft = {
+			json = { "deno_fmt", stop_after_first = true },
 			lua = { "stylua" },
 			python = { "ruff_format", stop_after_first = true },
 			javascript = { "prettier", stop_after_first = true },
