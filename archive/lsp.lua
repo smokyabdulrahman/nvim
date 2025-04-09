@@ -18,9 +18,42 @@ return {
 			{ "Bilal2453/luvit-meta", lazy = true },
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
+
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-buffer",
+            "L3MON4D3/LuaSnip",
 		},
 		config = function()
+            		local cmp = require("cmp")
+		local cmp_select = { behavior = cmp.SelectBehavior.Select }
+		local opts = {
+			-- Where to get completion results from
+			sources = cmp.config.sources({
+				{ name = "nvim_lsp" },
+				{ name = "buffer" },
+				{ name = "path" },
+			}),
+			mapping = cmp.mapping.preset.insert({
+				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<C-Space>"] = cmp.mapping.complete(),
+				["<Tab>"] = nil,
+				["<S-Tab>"] = nil,
+			}),
+			snippets = {
+				expand = function(args)
+					cmp.lsp_expand(args)
+				end,
+			},
+		}
+		cmp.setup(opts)
+
 			local lspconfig = require("lspconfig")
+			-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+			local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 			-- Swift
 			lspconfig.sourcekit.setup({
 				capabilities = {
@@ -29,12 +62,16 @@ return {
 							dynamicRegistration = true,
 						},
 					},
+					table.unpack(cmp_capabilities),
 				},
 			})
 			-- python
-			lspconfig.pyright.setup({})
+			lspconfig.pyright.setup({
+				capabilities = { table.unpack(cmp_capabilities) },
+			})
 			-- lua
 			require("lspconfig").lua_ls.setup({
+				capabilities = { table.unpack(cmp_capabilities) },
 				on_init = function(client)
 					if client.workspace_folders then
 						local path = client.workspace_folders[1].name

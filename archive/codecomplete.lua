@@ -1,8 +1,8 @@
 return {
-	"hrsh7th/nvim-cmp",
 	version = false,
 	event = "InsertEnter",
 	dependencies = {
+	"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-buffer",
@@ -10,7 +10,6 @@ return {
 	},
 	config = function()
 		local cmp = require("cmp")
-		local luasnip = require("cmp")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 		local opts = {
 			-- Where to get completion results from
@@ -29,7 +28,7 @@ return {
 			}),
 			snippets = {
 				expand = function(args)
-					luasnip.lsp_expand(args)
+					cmp.lsp_expand(args)
 				end,
 			},
 		}
