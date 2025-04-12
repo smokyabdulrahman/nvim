@@ -15,6 +15,7 @@ vim.diagnostic.config({ virtual_text = true })
 -- enabled servers
 vim.lsp.enable("pyright")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("sourcekit")
 
 -- lsp mappings
 local group = vim.api.nvim_create_augroup("LspMappings", { clear = true })
