@@ -10,7 +10,14 @@ vim.lsp.config("*", {
 })
 
 -- diagnostic
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({
+	underline = true,
+	signs = true,
+	float = {
+		source = "if_many",
+		border = "rounded",
+	},
+})
 
 -- enabled servers
 vim.lsp.enable("pyright")
@@ -37,10 +44,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.diagnostic.open_float()
 		end, opts)
 		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.jump({ count = 1 })
+			vim.diagnostic.jump({ count = 1, float = true })
 		end, opts)
 		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.jump({ count = -1 })
+			vim.diagnostic.jump({ count = -1, float = true })
 		end, opts)
 		vim.keymap.set("i", "<C-h>", function()
 			vim.lsp.buf.signature_help()
