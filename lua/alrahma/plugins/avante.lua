@@ -16,19 +16,25 @@ return {
 		-- 	max_tokens = 4096,
 		-- 	-- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
 		-- },
-		provider = "gemini",
-		auto_suggestions_provider = "gemini",
-		cursor_applying_provider = "gemini",
+		provider = "claude",
+		auto_suggestions_provider = "claude",
+		cursor_applying_provider = "claude",
 		behaviour = {
 			auto_suggestions = false,
 			enable_cursor_planning_mode = true, -- enable cursor planning mode!
+		},
+		claude = {
+			model = "claude-3-5-sonnet-20241022",
+			timeout = 30000, -- timeout in milliseconds
+			temperature = 0, -- adjust if needed
+			max_tokens = 2048,
 		},
 		gemini = {
 			endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
 			model = "gemini-2.0-flash-thinking-exp-01-21", -- your desired model (or use gpt-4o, etc.)
 			timeout = 30000, -- timeout in milliseconds
 			temperature = 0, -- adjust if needed
-			max_tokens = 4096,
+			max_tokens = 2048,
 			-- generationConfig = {
 			-- 	thinkingConfig = {
 			-- 		thinkingBudget = 1024,
