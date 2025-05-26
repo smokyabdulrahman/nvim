@@ -23,7 +23,7 @@ vim.diagnostic.config({
 vim.lsp.enable("pyright")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("sourcekit")
-vim.lsp.enable("ts")
+-- vim.lsp.enable("ts")
 vim.lsp.enable("go")
 
 -- lsp mappings
