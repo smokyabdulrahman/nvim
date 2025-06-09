@@ -19,10 +19,15 @@ return {
 	opts = {
 		-- Define your formatters
 		formatters_by_ft = {
+			typescript = { "prettier" },
+			typescriptreact = { "prettier" },
+			javascript = { "prettier" },
+			javascriptreact = { "prettier" },
+			html = { "prettier" },
+			css = { "prettier" },
 			json = { "deno_fmt", stop_after_first = true },
 			lua = { "stylua" },
 			python = { "ruff_format", stop_after_first = true },
-			javascript = { "prettier", stop_after_first = true },
 		},
 		-- Set default options
 		default_format_opts = {
