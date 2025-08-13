@@ -37,7 +37,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.lsp.buf.definition()
 		end, opts)
 		vim.keymap.set("n", "K", function()
-			vim.lsp.buf.hover()
+			vim.lsp.buf.hover({
+				border = "single",
+			})
 		end, opts)
 		vim.keymap.set("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()
@@ -52,7 +54,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.diagnostic.jump({ count = -1, float = true })
 		end, opts)
 		vim.keymap.set("i", "<C-h>", function()
-			vim.lsp.buf.signature_help()
+			vim.lsp.buf.signature_help({
+				border = "single",
+			})
 		end, opts)
 	end,
 })
