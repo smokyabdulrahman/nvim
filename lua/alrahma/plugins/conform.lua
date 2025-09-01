@@ -19,10 +19,10 @@ return {
 	opts = {
 		-- Define your formatters
 		formatters_by_ft = {
-			typescript = { "prettier" },
-			typescriptreact = { "prettier" },
-			javascript = { "prettier" },
-			javascriptreact = { "prettier" },
+			typescript = { "deno_fmt" },
+			typescriptreact = { "deno_fmt" },
+			javascript = { "deno_fmt" },
+			javascriptreact = { "deno_fmt" },
 			html = { "prettier" },
 			css = { "prettier" },
 			json = { "deno_fmt", stop_after_first = true },
