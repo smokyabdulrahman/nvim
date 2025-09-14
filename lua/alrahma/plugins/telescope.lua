@@ -11,5 +11,11 @@ return {
 		vim.keymap.set("n", "<leader>ps", function()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end)
+		require("telescope").setup({
+			defaults = {
+				layout_strategy = "horizontal",
+				layout_config = { height = 0.95, width = 0.95 },
+			},
+		})
 	end,
 }
