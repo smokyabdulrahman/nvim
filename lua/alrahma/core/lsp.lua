@@ -25,6 +25,7 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("sourcekit")
 -- vim.lsp.enable("ts")
 vim.lsp.enable("go")
+vim.lsp.enable("terraform_ls")
 
 -- lsp mappings
 local group = vim.api.nvim_create_augroup("LspMappings", { clear = true })
