@@ -20,7 +20,7 @@ vim.diagnostic.config({
 })
 
 -- enabled servers
-vim.lsp.enable("pyrefly")
+vim.lsp.enable("pyright")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("sourcekit")
 -- vim.lsp.enable("ts")
