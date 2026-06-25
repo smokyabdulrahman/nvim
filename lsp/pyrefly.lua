@@ -11,7 +11,8 @@ return {
 	},
 	init_options = {
 		preferences = {
-			displayTypeErrors = "force-on",
+			--displayTypeErrors = "force-on",
+			--typeCheckingMode = "strict",
 		},
 	},
 }
